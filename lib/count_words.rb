@@ -1,6 +1,5 @@
 
 def count_words(string)
-    fail "Nothing here" if string.empty?
+    fail "No text entered" if string.empty?
     string.split(" ").count
-    
 end

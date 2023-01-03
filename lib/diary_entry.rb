@@ -1,5 +1,5 @@
 class DiaryEntry
-    def initialize(title, contents) # title, contents are strings
+    def initialize(title, contents) 
       @title = title 
       @contents = contents
     end
@@ -13,7 +13,8 @@ class DiaryEntry
     end
   
     def count_words
-      return @contents.split(" ").count
+       return 0 if @contents.empty?
+       return @contents.split(" ").count
     end
   
     def reading_time(wpm) 
@@ -22,17 +23,12 @@ class DiaryEntry
 
     end
   
+ 
     def reading_chunk(wpm, minutes)
-      n = wpm * minutes
+      chunk_size = (wpm * minutes).to_f
+      number_of_chunks = (count_words / chunk_size).ceil
+      Array.new(number_of_chunks)
      
     end
   end
 
-  new_entry = DiaryEntry.new("test entry", "I have some time to read this long text. I think I can finish it within a minute. But if you add more words, I don't think I will be able to read any more")
-
-
-  new_entry.count_words
-
-  new_entry.reading_time(18)
-
-  p new_entry.reading_chunk(10, 1).
